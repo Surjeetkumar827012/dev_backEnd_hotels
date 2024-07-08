@@ -1,0 +1,6 @@
+# Ignore node _modules directory
+node_modules/
+
+#other entries...
+
+# to remove the node modules from the git command is:- git rm-r --cached node_modules

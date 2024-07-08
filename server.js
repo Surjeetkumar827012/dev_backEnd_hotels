@@ -6,6 +6,9 @@ const app = express()   //now all the express fuctionallity added to the app. No
 const db=require('./db');
 const MenuItem=require('./models/menu');
 const Person=require('./models/person');
+require('dotenv').config();
+
+const PORT=process.env.PORT || 3000;
 
 //const personRoutes=require('./routes/personRoutes');
 //app.use('/person', personRoutes);
@@ -157,7 +160,9 @@ app.delete('/person/:id', async(req,res)=>{
     }
 })
 
-app.listen(3000, ()=>{
+
+
+app.listen(PORT, ()=>{
     console.log('listening onport 3000')
 })  /* this is the port no. in lay man language we are difining the room of the waiter or server. now the server runs
                      runs in a local host in the computer let say computer is our building in which large no of rooms so we need 

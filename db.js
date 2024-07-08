@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
 // Define the MongoDB connection URL
-const mongoURL = 'mongodb://127.0.0.1:27017/hotels'; // Replace with your MongoDB URL
-
+const mongoURL ='mongodb://127.0.0.1:27017/hotels' // Replace with your MongoDB URL
 // Set up MongoDB connection
 mongoose.connect(mongoURL, {
     useUnifiedTopology: true,

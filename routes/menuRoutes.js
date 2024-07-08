@@ -1,4 +1,4 @@
-const express=require('express');
+/*const express=require('express');
 const router=express.Router();
 const MenuItem=require('./../models/menu');
 
@@ -9,11 +9,11 @@ router.post('/',async(req,res)=>{
          const newMenu=new MenuItem(data);
          const response= await newMenu.save();
          console.log('data saved');
-         res.status(200).json(response);
+         res.status(201).json(response);
     }
     catch(err){
         console.log(err);
-        res.status(500).json({error:'tinternal server Error'});
+        res.status(500).json({error:'internal server Error'});
     }
 })
 // to get the data from the database
@@ -49,3 +49,4 @@ router.get('/:tasteType', async(req,res)=>{
 })
 
 module.exports=router;
+*/

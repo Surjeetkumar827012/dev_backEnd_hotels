@@ -7,8 +7,18 @@ const db=require('./db');
 const MenuItem=require('./models/menu');
 const Person=require('./models/person');
 require('dotenv').config();
-
 const PORT=process.env.PORT || 3000;
+
+//import Authentation
+const passport=require('./auth');
+app.use(passport.initialize());
+const localAuthMiddleware=passport.authenticate('local',{session:false});
+
+//Middleware fuction
+const logRequest=(req,res,next)=>{
+    console.log(`[${new Date().toLocaleString()}] Request Made to : ${req.originalUrl}`);
+    next();
+}
 
 //const personRoutes=require('./routes/personRoutes');
 //app.use('/person', personRoutes);
@@ -20,7 +30,8 @@ const PORT=process.env.PORT || 3000;
 const bodyParser=require('body-parser');
 app.use(bodyParser.json());  //req.body
 
-app.get('/', function(req,res){
+app.use(logRequest);
+app.get('/',localAuthMiddleware, function(req,res){
     res.send('Welcome to my hotel... How can I help You?')
 })
 
@@ -90,7 +101,7 @@ app.post('/person', async(req, res)=>{
     }
 })
 
-app.get('/person',async(req,res)=>{
+app.get('/person',localAuthMiddleware,async(req,res)=>{
     try{
         const data=await Person.find();
         console.log('data fetch');
